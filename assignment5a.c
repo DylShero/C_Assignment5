@@ -17,6 +17,7 @@
 
 #define NUMRAN 1000000   /* Number of random numbers to generate */
 
+
 int main(void)
 {
     /* Allocate memory for uniformly distributed variables */
@@ -40,7 +41,7 @@ int main(void)
     /// Populate the initial array of doubles between 0 and 1 
     /// Remember that rand() returns values on [0, RAND_MAX] 
     for (int i = 0; i < NUMRAN; i++) {
-           /* Code Here */
+           u[i] = random();
     }
 
     /// TODO
@@ -92,3 +93,4 @@ int main(void)
     /// Do any tidying up here
     return 0;
 }
+
