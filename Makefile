@@ -9,13 +9,16 @@
 
 all: assignment5a
 
-assignment5a: assignment5a.c file_io.o 
-	gcc -Wall -Wextra -o assignment5a assignment5a.c file_io.o sort.o
+assignment5a: assignment5a.c file_io.o stats.o
+	gcc -Wall -Wextra -o assignment5a assignment5a.c file_io.o stats.o
 
 file_io.o: file_io.c 
 	gcc -Wall -Wextra -c file_io.c
 
+stats.o: stats.c
+	gcc -Wall -Wextra -c stats.c
+
 .PHONY: all clean
 
 clean:
-	rm -f assignment5a file_io.o
+	rm -f assignment5a file_io.o stats.o

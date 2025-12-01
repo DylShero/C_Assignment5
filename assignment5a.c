@@ -35,18 +35,20 @@ int main(void)
 
     /// TODO
     /// Replace the seed with the last 5 digits of your student number
-    srand(12345);
+    srand(30976);
 
-    /// TODO
-    /// Populate the initial array of doubles between 0 and 1 
-    /// Remember that rand() returns values on [0, RAND_MAX] 
+
     for (int i = 0; i < NUMRAN; i++) {
-           u[i] = random();
+           u[i] = (double)rand()/RAND_MAX; //Cast to double to do as calculation as a double. Divide by RAND_MAX to get values with [0,1]
     }
 
     /// TODO
     /// Write code to call your box_muller function and use it to populate v[]
     ///
+    for(int i = 0; i < NUMRAN; i++){
+        box_muller(double const u1, double const u2, double n1, double n2);
+    }
+    
     
 
   /// TODO:
@@ -61,7 +63,10 @@ int main(void)
    * NOTE: You will need to write comp_doubles_asc yourself. See document
    */
     qsort(u, NUMRAN, sizeof(double), comp_doubles_asc);
-    qsort(v, NUMRAN, sizeof(double), comp_doubles_asc);
+    //qsort(v, NUMRAN, sizeof(double), comp_doubles_asc);
+    for(int i = 0; i < 100; i++){
+        printf("%lf\n", u[i]);
+    }
 
   
 
@@ -69,7 +74,7 @@ int main(void)
      * The code below here will set up, and then call the functions to create
      * and then write to file, the histograms
      */
-    int const numbins = 50;     /* You can just use a fixed number for this assignment */
+    //int const numbins = 50;     /* You can just use a fixed number for this assignment */
 
     /// TODO 
     /// Allocate memory for arrays to hold the bincounts and bincentres. I.e arrays that hold
@@ -84,10 +89,10 @@ int main(void)
      * and then write it to file. These lines should work in your final version 
      * of your main without modification
      */
-    histogram(u, NUMRAN, bincentres, bincounts, numbins);
+    /*histogram(u, NUMRAN, bincentres, bincounts, numbins);
     write_histogram_to_file("uniform_histogram.txt", bincentres, bincounts, numbins);
     histogram(v, NUMRAN, bincentres, bincounts, numbins);
-    write_histogram_to_file("normal_histogram.txt", bincentres, bincounts, numbins);
+    write_histogram_to_file("normal_histogram.txt", bincentres, bincounts, numbins); */
     
     /// TODO:
     /// Do any tidying up here
