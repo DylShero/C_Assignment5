@@ -9,14 +9,17 @@
 
 all: assignment5a
 
-assignment5a: assignment5a.c file_io.o stats.o
-	gcc -Wall -Wextra -o assignment5a assignment5a.c file_io.o stats.o
+assignment5a: assignment5a.c file_io.o stats.o random.o
+	gcc -Wall -Wextra -o assignment5a assignment5a.c file_io.o stats.o random.o -lm
 
 file_io.o: file_io.c 
 	gcc -Wall -Wextra -c file_io.c
 
 stats.o: stats.c
 	gcc -Wall -Wextra -c stats.c
+
+random.o: random.c 
+	gcc -Wall -Wextra -c random.c
 
 .PHONY: all clean
 

@@ -45,8 +45,8 @@ int main(void)
     /// TODO
     /// Write code to call your box_muller function and use it to populate v[]
     ///
-    for(int i = 0; i < NUMRAN; i++){
-        box_muller(double const u1, double const u2, double n1, double n2);
+    for(int i = 0; i < NUMRAN; i+=2){
+        box_muller(u[i], u[i+1], &v[i], &v[i+1]);
     }
     
     
@@ -63,9 +63,13 @@ int main(void)
    * NOTE: You will need to write comp_doubles_asc yourself. See document
    */
     qsort(u, NUMRAN, sizeof(double), comp_doubles_asc);
-    //qsort(v, NUMRAN, sizeof(double), comp_doubles_asc);
-    for(int i = 0; i < 100; i++){
+    qsort(v, NUMRAN, sizeof(double), comp_doubles_asc);
+    /*for(int i = 0; i < 100; i++){
         printf("%lf\n", u[i]);
+    } */
+
+    for(int i = 0; i < 100; i++){
+        printf("%lf\n", v[i]);
     }
 
   
@@ -74,13 +78,21 @@ int main(void)
      * The code below here will set up, and then call the functions to create
      * and then write to file, the histograms
      */
-    //int const numbins = 50;     /* You can just use a fixed number for this assignment */
+    int const numbins = 50;     /* You can just use a fixed number for this assignment */
 
     /// TODO 
     /// Allocate memory for arrays to hold the bincounts and bincentres. I.e arrays that hold
     /// numbins integers and doubles respectively.
-    //int * bincounts = 
-    ////double * bincentres =
+    int * bincounts = calloc(numbins ,sizeof(bincounts));
+    if(bincounts == NULL){
+        perror("Allocating memeory for bincounts array failed\n");
+        exit(EXIT_FAILURE);
+    }
+    double * bincentres = calloc(numbins, sizeof(bincentres));
+    if(bincentres == NULL){
+        perror("Failure allocating memory for bin centres\n");
+        exit(EXIT_FAILURE);
+    }
    
 
 
@@ -89,10 +101,10 @@ int main(void)
      * and then write it to file. These lines should work in your final version 
      * of your main without modification
      */
-    /*histogram(u, NUMRAN, bincentres, bincounts, numbins);
-    write_histogram_to_file("uniform_histogram.txt", bincentres, bincounts, numbins);
+    histogram(u, NUMRAN, bincentres, bincounts, numbins);
+    //write_histogram_to_file("uniform_histogram.txt", bincentres, bincounts, numbins);
     histogram(v, NUMRAN, bincentres, bincounts, numbins);
-    write_histogram_to_file("normal_histogram.txt", bincentres, bincounts, numbins); */
+    //write_histogram_to_file("normal_histogram.txt", bincentres, bincounts, numbins); 
     
     /// TODO:
     /// Do any tidying up here
