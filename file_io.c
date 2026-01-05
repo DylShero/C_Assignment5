@@ -48,3 +48,22 @@ int write_vec_to_file(const char * filename, const double v[const], const int n)
 	fclose(fptr);
 	return 0;
 }
+
+int write_histogram_to_file(char const * const filename, double const * const bincentres, int const * const bincounts, int const N){
+	FILE *fptr = NULL;
+	fptr = fopen(filename, "w");
+	if(fptr == NULL){ //Error checking if file cannot be accessed give error message
+		char errmsg[128];
+		sprintf(errmsg, "Error reading from %s on line %d in file %s", filename, __LINE__, __FILE__);
+		perror(errmsg);
+		return -1;
+	}
+
+	for(int i = 0; i<N; i++){
+		fprintf(fptr,"%d, %lf, %d\n", i, bincentres[i], bincounts[i]);
+	}
+
+	fclose(fptr);
+	return 0;
+
+}

@@ -10,7 +10,8 @@ to file functions.
 #include <stdio.h>
 
 
-int 	read_vec_from_file(const char * filename, double v[const], const int n);
-int 	write_vec_to_file(const char * filename, const double v[const], const int n);
+int read_vec_from_file(const char * filename, double v[const], const int n);
+int write_vec_to_file(const char * filename, const double v[const], const int n);
+int write_histogram_to_file(char const * const filename, double const * const bincentres, int const * const bincounts, int const N);
 
 #endif

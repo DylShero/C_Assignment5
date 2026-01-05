@@ -68,9 +68,9 @@ int main(void)
         printf("%lf\n", u[i]);
     } */
 
-    for(int i = 0; i < 100; i++){
+    /*for(int i = 0; i < 100; i++){
         printf("%lf\n", v[i]);
-    }
+    }*/
 
   
 
@@ -83,12 +83,12 @@ int main(void)
     /// TODO 
     /// Allocate memory for arrays to hold the bincounts and bincentres. I.e arrays that hold
     /// numbins integers and doubles respectively.
-    int * bincounts = calloc(numbins ,sizeof(bincounts));
+    int * bincounts = calloc(numbins ,sizeof(*bincounts));
     if(bincounts == NULL){
         perror("Allocating memeory for bincounts array failed\n");
         exit(EXIT_FAILURE);
     }
-    double * bincentres = calloc(numbins, sizeof(bincentres));
+    double * bincentres = calloc(numbins, sizeof(*bincentres));
     if(bincentres == NULL){
         perror("Failure allocating memory for bin centres\n");
         exit(EXIT_FAILURE);
@@ -102,9 +102,15 @@ int main(void)
      * of your main without modification
      */
     histogram(u, NUMRAN, bincentres, bincounts, numbins);
-    //write_histogram_to_file("uniform_histogram.txt", bincentres, bincounts, numbins);
+    write_histogram_to_file("uniform_histogram.txt", bincentres, bincounts, numbins);
+    
+    for(int i = 0; i < numbins; i++){
+        bincounts[i] = 0;
+        bincentres[i] = 0.0;
+    }
+
     histogram(v, NUMRAN, bincentres, bincounts, numbins);
-    //write_histogram_to_file("normal_histogram.txt", bincentres, bincounts, numbins); 
+    write_histogram_to_file("normal_histogram.txt", bincentres, bincounts, numbins); 
     
     /// TODO:
     /// Do any tidying up here
