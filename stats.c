@@ -37,8 +37,41 @@ void histogram(double const * const in, int const numpoints, double * const binc
         bincentres[i] = min_val + (i * bin_width) + (bin_width / 2.0);
         printf("Bin %d is placed at bin centre %lf =  with bincount of %d \n", i, bincentres[i], bincounts[i]);
     }
-
-
-
     
+}
+
+double expected_value(double * const v, int const N) {
+
+    if (N <= 0) { //Check if zero data points
+        return 0.0;
+    }
+
+    double sum = 0.0;
+    
+    // Sum all elements in the array
+    for (int i = 0; i < N; i++) {
+        sum += v[i];
+    }
+    
+    return sum / N;
+}
+
+double variance(double * const v, int const N) {
+
+    if (N <= 0) { //Check if zero data points
+        return 0.0;
+    }
+
+    //Calculate expected value - E(X)
+    double ex_val = expected_value(v, N);
+
+    //Caculate E(X^2) sum the squares of the elements and divide by N
+    double sum_sq = 0.0;
+    for (int i = 0; i < N; i++) {
+        sum_sq += (v[i] * v[i]);
+    }
+    double ex_val_sq = sum_sq / N;
+
+    //Variance: E(X^2) - (E(X))^2
+    return ex_val_sq - (ex_val * ex_val);
 }
