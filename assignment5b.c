@@ -125,6 +125,10 @@ int main(void)
         perror("Error allocating memory for bincounts");
         exit(EXIT_FAILURE);
     }
+
+    for (int k = 0; k < numbins; k++) { //Set all bincount values to zero.
+        bincounts[k] = 0;
+    }
     double * bincentres = malloc (numbins * sizeof * bincentres);
     if(bincentres == NULL){
         perror("Error allocating memory for bincentres");
