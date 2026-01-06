@@ -5,7 +5,7 @@ import sys
 # Program to plot histogram data from assignment 5a 
 
 # Define the filename 
-filename = "normal_histogram.txt"  
+filename = "uniform_histogram.txt"  
 
 try:
     # Load the data
@@ -13,10 +13,7 @@ try:
 
     data = np.loadtxt(filename, delimiter=',')
 
-    # Extract columns
-    # Column 0 is the index
-    # Column 1 is the Bin Centres (X-axis)
-    # Column 2 is the Bin Counts (Y-axis)
+    #Extract columns
     bin_centers = data[:, 1]
     bin_counts  = data[:, 2]
 
@@ -24,7 +21,7 @@ try:
     if len(bin_centers) > 1:
         bin_width = bin_centers[1] - bin_centers[0]
     else:
-        bin_width = 1.0 # Default if only one bin exists
+        bin_width = 1.0 # If only one bin exists
 
     # Create the Plot
     plt.figure(figsize=(10, 6))
@@ -34,7 +31,7 @@ try:
     plt.title('Histogram Data')
     plt.grid(axis='y', alpha=0.5)
     plt.show()
-    plt.savefig("histogram_plot.png")
+    plt.savefig("uniform_histogram_plot.png")
 
 except OSError:
     print(f"Error could not find or open file '{filename}'.")
