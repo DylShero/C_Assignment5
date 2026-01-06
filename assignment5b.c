@@ -30,10 +30,11 @@ int main(void)
     }
 
     /// TODO: Replace seed with last 5 digits of your student number
-    srand(12345); 
+    srand(30976); 
     for (int i = 0; i < NUM_SIMS*NUM_STOCKS; i++) {
         /// TODO: Populate uniform_rvs array the same as you did for assigment5a.c
         /// i.e. using rand()
+        uniform_rvs[i] = (double)rand() / (double)RAND_MAX;
     }
 
 
@@ -45,6 +46,9 @@ int main(void)
     /// TODO:
     /// Call your box_muller to transform the uniform rvs in uniform_rvs and store the 
     /// transformed numbers in normal_rvs
+    for (int i = 0; i < NUM_SIMS * NUM_STOCKS; i += 2) {
+        box_muller(uniform_rvs[i], uniform_rvs[i+1], &normal_rvs[i], &normal_rvs[i+1]);
+    }
 
 
     /*

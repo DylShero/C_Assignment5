@@ -35,7 +35,7 @@ void histogram(double const * const in, int const numpoints, double * const binc
 
         //Set Bin Centres
         bincentres[i] = min_val + (i * bin_width) + (bin_width / 2.0);
-        printf("Bin %d is placed at bin centre %lf =  with bincount of %d \n", i, bincentres[i], bincounts[i]);
+        //printf("Bin %d is placed at bin centre %lf =  with bincount of %d \n", i, bincentres[i], bincounts[i]);
     }
     
 }
