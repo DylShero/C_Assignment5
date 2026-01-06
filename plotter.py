@@ -5,7 +5,7 @@ import sys
 # Program to plot histogram data from assignment 5a 
 
 # Define the filename 
-filename = "uniform_histogram.txt"  
+filename = "normal_histogram.txt"  
 
 try:
     # Load the data
@@ -30,8 +30,8 @@ try:
     plt.ylabel('Frequency (Counts)')
     plt.title('Histogram Data')
     plt.grid(axis='y', alpha=0.5)
+    plt.savefig("normal_histogram_plot.png")
     plt.show()
-    plt.savefig("uniform_histogram_plot.png")
 
 except OSError:
     print(f"Error could not find or open file '{filename}'.")
